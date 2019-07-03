@@ -7,14 +7,17 @@ io.setwarnings(True)
 
 # CONFIGURACIONES DE PERIFERICOS
 LED1 = 13
+SWITCH = 11
 
 io.setup(LED1, io.OUT)
+io.setup(Switch, io.IN)
 
 # RUTINA PRINCIPAL
 
 if __name__ == '__main__':
     while True:
-        io.output(LED1, True)
-        time.sleep(0.5)
-        io.output(LED1, False)
-        time.sleep(0.5)
+        switch_value = io.input(Switch)
+        if switch_value == 0:
+            io.output(LED1, True)
+        else:
+            io.output(LED1, False)
